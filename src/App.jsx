@@ -1,13 +1,21 @@
-import { useState } from "react";
 import Typewriter from "typewriter-effect";
+import { DocumentIcon, ArrowUpIcon } from "@heroicons/react/24/outline";
 import "./App.css";
 
 function App() {
+  window.addEventListener("scroll", () => {
+    if (window.scrollY < 300) {
+      document.getElementById("arrow").style.display = "none";
+    } else {
+      document.getElementById("arrow").style.display = "flex";
+    }
+  });
+
   return (
-    <div className="bg-black h-screen flex flex-col">
+    <div className="bg-black h-[100%] flex flex-col">
       {/* navbar */}
-      <div className="flex w-screen min-h-[50px] fixed z-10  ">
-        <div className="flex justify-start items-center p-9 w-1/2 group-hover:opacity-100 transition duration-200">
+      <div id="nav" className="flex w-screen min-h-[20px] fixed z-10 ">
+        <div className="flex justify-start items-center p-6 w-1/2 group-hover:opacity-100 transition duration-200">
           <div className="bg-pink-600 h-10 w-10 absolute rounded-lg blur-lg opacity-75 "></div>
           <a href="#">
             <img
@@ -21,7 +29,9 @@ function App() {
           <h3 className="text-[#EA047E] font-semibold pr-10">
             <a href="#about">About</a>
           </h3>
-          <h3 className="text-[#EA047E] font-semibold pr-10">Projects</h3>
+          <h3 className="text-[#EA047E] font-semibold pr-10">
+            <a href="#projects">Projects</a>
+          </h3>
           <h3 className="text-[#EA047E] font-semibold pr-10">
             <a href="mailto:jazimsadath@gmail.com">Contact</a>
           </h3>
@@ -58,7 +68,12 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="  flex justify-center items-center pb-10">
+
+      {/* About me */}
+      <div
+        id="about"
+        className="  flex justify-center items-center h-[100vh] pb-10"
+      >
         <div className="flex justify-center w-1/2  items-center" id="about">
           <div className="flex gap-12">
             <img
@@ -73,11 +88,11 @@ function App() {
                 A BIT ABOUT ME
               </p>
               <p className="text-white text-sm leading-5 ">
-                I'm a BTech Computer Science graduate from{" "}
+                I&apos;m a BTech Computer Science graduate from{" "}
                 <span className="font-extrabold underline">
                   Cochin University of Science And Technology.{" "}
                 </span>
-                <br></br> I'm passionate about{" "}
+                <br></br> I&apos;m passionate about{" "}
                 <span className="font-extrabold underline">
                   Web Developement.
                 </span>{" "}
@@ -98,6 +113,27 @@ function App() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Projects */}
+      <div
+        id="projects"
+        className="flex flex-col items-center h-[100vh] justify-center mt-8"
+      >
+        <p className="text-[#EA047E] text-3xl ">Projects</p>
+      </div>
+      <div className="fixed bottom-5 right-5 bg-[#EA047E] text-black text-center h-10 w-10 rounded-md flex justify-center items-center">
+        <a title="Resume" href="/Resume.pdf" target="_blank" rel="noreferrer">
+          <DocumentIcon className="h-7 " />
+        </a>
+      </div>
+      <div
+        id="arrow"
+        className="fixed bottom-5 right-[70px] bg-[#EA047E] text-black text-center h-10 w-10 rounded-md flex justify-center items-center"
+      >
+        <a href="#">
+          <ArrowUpIcon className="h-7 " />
+        </a>
       </div>
     </div>
   );
